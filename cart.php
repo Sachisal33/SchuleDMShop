@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="stylesheet.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,17 +26,23 @@
         </a>
         </div>
         <div style="margin-top:100px; left: 50%; transform: translateX(-50%); position: relative;">
-        <div class="grid-container">    
+        <h1 style="font-family: cursive; color: white;">Warenkorb</h1>
+        <div style="display: flex">
+        <h2 style="color: white; width: 90%;">Summe: €</h2>
+        <button href="" class="normalButton">zur Kasse</button>';        
+        </div>
+        <hr style="margin-bottom: 20px;">
+        <div class="grid-container" style="grid-template-columns: repeat(1,minmax(0,1fr));">    
             <!--Hier kann wieder per row rein, dann alles echo-->
             <div class="cart-container">  
-             <img style="cart-image" src="https://media.dm-static.com/images/f_auto,q_auto,c_fit,w_260,h_270/v1633050948/products/pim/4015100711981-2718676/schwarzkopf-gliss-kur-haarkur-winter-edition"> <!-- src=". $row["ImageSource"]."-->
+             <img class="cart-image" src="https://media.dm-static.com/images/f_auto,q_auto,c_fit,w_260,h_270/v1633050948/products/pim/4015100711981-2718676/schwarzkopf-gliss-kur-haarkur-winter-edition"> <!-- src=". $row["ImageSource"]."-->
                 <div style="margin:20px;">   
                     <b> Titel </b></br>
                     Beschreibung</br>
                     <div style="display: flex; margin-top: 75px">
-                    <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/992/992482.png">
+                    <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/992/992482.png"> <!--name="add'. $row["ID"].'"-->
                     <div style="margin: 0px 20px;">Anzahl</div>
-                    <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/2569/premium/2569198.png?token=exp=1639333311~hmac=b8d10625aa25f8668375e7300535c5f4">
+                    <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/2569/premium/2569198.png?token=exp=1639333311~hmac=b8d10625aa25f8668375e7300535c5f4"> <!--name="remove'. $row["ID"].'"-->
                 </div>
             </div>
                 <div style="right: 40px; margin-top: 20px; position: absolute; text-align: right;">
@@ -44,7 +50,14 @@
                 <div style="margin-top:93px">ausgerechneter Preis €</div>
             </div>
         </div>
+        <hr style="margin: 20px 0px;">
         <?php
+ //            if(isset($_POST['add'. $row["ID"] ])) {
+ //              // Anzahl++
+ //           }   
+ //           if(isset($_POST['remove'. $row["ID"] ])) {
+ //              // Anzahl--
+ //           }
         ?>
         </div>
 </body>

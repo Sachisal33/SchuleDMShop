@@ -197,6 +197,15 @@ body {
 	max-height: 200px; max-width: 100px;padding:20px; object-fit: contain;
   }
 
+  .normalButton{
+	color: rgb(0, 40, 120);
+	background-color: white;
+	/*background-color: rgb(0, 40, 120);
+	border: 2px solid rgb(0, 40, 120);*/
+	border-radius: 44px;
+	width:110px;
+  }
+
 
   @media (max-width: 1170px){
 	  .grid-container {
