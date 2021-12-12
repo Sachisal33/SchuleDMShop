@@ -89,7 +89,7 @@ nav .start-contact, a:nth-child(7):hover~.animation {
 }
 nav .start-contact, a:nth-child(8):hover~.animation {
 	width: 80px;
-	left: 870px;
+	left: 820px;
 	background-color: #e67e22;
 }
 
@@ -179,7 +179,9 @@ body {
     border-radius: 20px;
     background: rgb(229, 233, 241);
 }
+
 .grid-container {
+	background-color: transparent !important;
 	display: grid;
 	grid-template-columns: repeat(5,minmax(0,1fr));
 	grid-gap: 1rem;
@@ -187,22 +189,23 @@ body {
 	padding: 10px;
   } 
 
+  .cart-container{
+	display: flex; background: rgb(229, 233, 241); border-radius: 20px; margin: 20px; height:200px
+  }
+
+  .cart-image{
+	max-height: 200px; max-width: 100px;padding:20px; object-fit: contain;
+  }
+
+
   @media (max-width: 1170px){
 	  .grid-container {
-		  display: grid;
 		  grid-template-columns: repeat(4,minmax(0,1fr));
-		  grid-gap: 1rem;
-		  gap: 1rem;
-		  padding: 10px;
 		} 
   }
 
 	@media (max-width: 940px){
 		.grid-container {
-			display: grid;
 			grid-template-columns: repeat(3,minmax(0,1fr));
-			grid-gap: 1rem;
-			gap: 1rem;
-			padding: 10px;
 		  } 
 	}
