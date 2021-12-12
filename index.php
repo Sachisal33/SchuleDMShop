@@ -87,14 +87,45 @@
                         </a> ';             
             echo '</div>';
             
-            if(isset($_POST['button'. $row["ID"] ])) {
-                //Funktion für's in den Warenkorb legen, kann dafür ja die ID nutzen
-            }
                 }
             } else {
                 echo "0 results";
             }
 
+            if(isset($_POST['button'. $row["ID"] ])) {
+                //Funktion für's in den Warenkorb legen, kann dafür ja die ID nutzen
+            }
+            if (isset($_GET['alle'])) loadItems('1');
+            if (isset($_GET['ernaehrung'])) loadItems('2');
+            if (isset($_GET['gesundheit'])) loadItems('3');
+            if (isset($_GET['haare'])) loadItems('4');
+            if (isset($_GET['make-up'])) loadItems('5');
+            if (isset($_GET['maenerpflege'])) loadItems('6');
+            if (isset($_GET['pflege-und-parfum'])) loadItems('7');
+            if (isset($_GET['tier'])) loadItems('8');
+
+            function loadItems($id){
+                //lade die items neu, je nach kategorie
+                switch($id)
+                {
+                    case 1:
+                    break;
+                    case 2:
+                    break;
+                    case 3:
+                    break;
+                    case 4:
+                    break;
+                    case 5:
+                    break;
+                    case 6:
+                    break;
+                    case 7:
+                    break;
+                    case 8:
+                    break;
+                }
+            }
             function substrwords($text, $maxchar, $end='...') {
                 if (strlen($text) > $maxchar || $text == '') {
                     $words = preg_split('/\s/', $text);      
