@@ -186,3 +186,23 @@ body {
     gap: 1rem;
 	padding: 10px;
   } 
+
+  @media (max-width: 1170px){
+	  .grid-container {
+		  display: grid;
+		  grid-template-columns: repeat(4,minmax(0,1fr));
+		  grid-gap: 1rem;
+		  gap: 1rem;
+		  padding: 10px;
+		} 
+  }
+
+	@media (max-width: 940px){
+		.grid-container {
+			display: grid;
+			grid-template-columns: repeat(3,minmax(0,1fr));
+			grid-gap: 1rem;
+			gap: 1rem;
+			padding: 10px;
+		  } 
+	}
