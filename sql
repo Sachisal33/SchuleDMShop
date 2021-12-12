@@ -27,7 +27,7 @@ VALUES
         'Shampoo Anti-Schuppen Classic clean, 500 ml',
         5.95,
         'Haare',
-        'Das head & shoulders Classic Clean Anti-Schuppen Shampoo mit Aloe wurde entwickelt, um Ihr Haar und Ihre Kopfhaut mit Feuchtigkeit* zu versorgen – für bis zu 100% schuppenfreies Haar**. Die reichhaltige Formel mit natürlicher Aloe wirkt juckender***, fettiger und trockener Kopfhaut effektiv entgegen und bekämpft Schuppen, bevor sie zu sehen sind.'.
+        'Das head & shoulders Classic Clean Anti-Schuppen Shampoo mit Aloe wurde entwickelt, um Ihr Haar und Ihre Kopfhaut mit Feuchtigkeit* zu versorgen – für bis zu 100% schuppenfreies Haar**. Die reichhaltige Formel mit natürlicher Aloe wirkt juckender***, fettiger und trockener Kopfhaut effektiv entgegen und bekämpft Schuppen, bevor sie zu sehen sind.',
         'https://media.dm-static.com/images/f_auto,q_auto,c_fit,w_1200,h_1200/v1630639304/products/pim/8001841734316-2581902/head-und-shoulders-shampoo-anti-schuppen-classic-clean'
     ),    
     (
