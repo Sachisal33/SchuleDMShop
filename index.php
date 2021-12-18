@@ -1,7 +1,46 @@
-<?php 
-    session_start(); 
-    require 'dbcontext.php';  
-?> 
+<?php
+session_start();
+
+include('dbcontext.php');
+$status="";
+if (isset($_POST['code']) && $_POST['code']!=""){
+$code = $_POST['code'];
+$result = mysqli_query($con,"SELECT * FROM `products` WHERE `code`='$code'");
+$row = mysqli_fetch_assoc($result);
+$name = $row['name'];
+$code = $row['code'];
+$category = $row['category'];
+$description = $row['description'];
+$price = $row['price'];
+$image = $row['image'];
+
+$cartArray = array(
+	$code=>array(
+	'name'=>$name,
+	'code'=>$code,
+    'category'=>$category,
+    'description'=>$description,
+	'price'=>$price,
+	'quantity'=>1,
+	'image'=>$image)
+);
+
+if(empty($_SESSION["shopping_cart"])) {
+	$_SESSION["shopping_cart"] = $cartArray;
+	$status = "<div class='box'>Product is added to your cart!</div>";
+}else{
+	$array_keys = array_keys($_SESSION["shopping_cart"]);
+	if(in_array($code,$array_keys)) {
+		$status = "<div class='box' style='color:red;'>
+		Product is already added to your cart!</div>";	
+	} else {
+	$_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"],$cartArray);
+	$status = "<div class='box'>Product is added to your cart!</div>";
+	}
+
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="de">
 
@@ -57,40 +96,12 @@
         <div style="margin-top:100px; left: 50%; transform: translateX(-50%); position: relative;">
         <div class="grid-container">
         <?php
-       
-            $conn = OpenCon();
+            if(!empty($_SESSION["shopping_cart"])) {
+            $cart_count = count(array_keys($_SESSION["shopping_cart"]));
 
-            if(isset($_GET['action']) && $_GET['action']=="add"){ 
-            
-                $id=intval($_GET['id']); 
-                    
-                if(isset($_SESSION['cart'][$id])){ 
-                        
-                    $_SESSION['cart'][$id]['menge']++; 
-                        
-                }else{ 
-                       
-                    $sql = "SELECT * FROM produkte";
-                    $result = $conn->query($sql);
-         
-                    if ($result->num_rows != 0) {
-                        $row_s=mysqli_fetch_array($result); 
-                            
-                        $_SESSION['cart'][$row_s['ID']]=array( 
-                                "menge" => 1, 
-                                "preis" => $row_s['Preis'] 
-                            );                    
-                            
-                    }else{                     
-                        $message="This product id it's invalid!";                     
-                    } 
-                        
-                } 
-                    
-            } 
+            }
 
-            $sql = "SELECT * FROM produkte";
-            $result = $conn->query($sql);
+            $sql = "SELECT * FROM products";
 
             if (isset($_GET['alle'])) loadItems('1');
             if (isset($_GET['ernaehrung'])) loadItems('2');
@@ -101,104 +112,69 @@
             if (isset($_GET['pflege-und-parfum'])) loadItems('7');
             if (isset($_GET['tier'])) loadItems('8');
 
-            if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
+            $result = mysqli_query($con, $sql);
+            while($row = mysqli_fetch_assoc($result)){
+
                 echo '<div class="object">';
+                echo "<form method='post' action=''>
+                <input type='hidden' name='code' value=".$row['code']." />";
                 echo '<div class="image-container"> 
-                <div class="image" style="background-image: url('. $row["ImageSource"].')">';
+                <div class="image" style="background-image: url('. $row["image"].')">';
                 echo '</div>';
                 echo '</div>';
-                echo '<div style="text-align: center"><b>'. $row["Name"]. 
-               '</b><br>'. substrwords($row["Beschreibung"],40). 
-                '<br><b>' . $row["Preis"]. 
-                '€ </b></div>
-                            <a href="index.php?action=add&id='. $row["ID"].'">
-                            <button class="button" name="button'. $row["ID"].'">
-                                <svg data-dmid="dm-cart" viewBox="0 0 24 24" width="24" height="24" role="img" ><path fill="currentColor" d="M10.1206428,17.0629454 C11.1937188,17.0629454 12.0636187,17.9442851 12.0636187,19.0314727 C12.0636187,20.1186603 11.1937188,21 10.1206428,21 C9.04756688,21 8.17766694,20.1186603 8.17766694,19.0314727 C8.17766694,17.9442851 9.04756688,17.0629454 10.1206428,17.0629454 Z M16.9260404,17.0629454 C17.9991164,17.0629454 18.8690163,17.9442851 18.8690163,19.0314727 C18.8690163,20.1186603 17.9991164,21 16.9260404,21 C15.8529645,21 14.9830646,20.1186603 14.9830646,19.0314727 C14.9830646,17.9442851 15.8529645,17.0629454 16.9260404,17.0629454 Z M4.68250234,4.00019906 C4.81805312,4.00305343 6.04925033,4.04542755 6.45389858,4.64608076 C6.88234968,5.28206651 6.80263785,5.58491686 7.12148517,6.07957245 C7.29885482,6.35289764 7.59594594,6.52220905 7.91860349,6.53384798 L7.91860349,6.53384798 L21.1507675,6.53384798 C21.4308548,6.53384798 21.670625,6.62101216 21.8337144,6.83112471 C21.9968038,7.04123727 22.0435467,7.32082751 21.9578498,7.5736342 L21.9578498,7.5736342 L20.1344417,13.5296912 C19.8182354,14.4890106 18.9672885,15.1644178 17.9722582,15.2458432 L17.9722582,15.2458432 L9.22388473,15.2458432 C8.27336536,15.155352 7.4514576,14.5366515 7.09159324,13.6407363 C7.08162926,13.6003563 7.0118814,13.4691211 7.0118814,13.378266 C6.72292602,12.3990499 5.41764477,7.02850356 5.12868939,6.53384798 C4.96316485,6.23794413 4.64690714,6.06210569 4.31164311,6.07957245 L4.31164311,6.07957245 L3.02628983,6.07957245 C2.45948561,6.07957245 2,5.6140443 2,5.03978622 C2,4.46552815 2.45948561,4 3.02628983,4 L3.02628983,4 Z"></path></svg>
-                            </button>
-                            </a>';        
-            echo '</div>';
-            
-                }
-            } else {
-                echo "0 results";
+                echo '<div style="text-align: center"><b>'. $row["name"]. 
+               '</b><br>'. substrwords($row["description"],40). 
+                '<br><b>' . $row["price"]. 
+                '€ </b>
+                </div>';
+                echo "<button type='submit' class='buy'>";
+                echo '<svg data-dmid="dm-cart" viewBox="0 0 24 24" width="24" height="24" role="img" ><path fill="currentColor" d="M10.1206428,17.0629454 C11.1937188,17.0629454 12.0636187,17.9442851 12.0636187,19.0314727 C12.0636187,20.1186603 11.1937188,21 10.1206428,21 C9.04756688,21 8.17766694,20.1186603 8.17766694,19.0314727 C8.17766694,17.9442851 9.04756688,17.0629454 10.1206428,17.0629454 Z M16.9260404,17.0629454 C17.9991164,17.0629454 18.8690163,17.9442851 18.8690163,19.0314727 C18.8690163,20.1186603 17.9991164,21 16.9260404,21 C15.8529645,21 14.9830646,20.1186603 14.9830646,19.0314727 C14.9830646,17.9442851 15.8529645,17.0629454 16.9260404,17.0629454 Z M4.68250234,4.00019906 C4.81805312,4.00305343 6.04925033,4.04542755 6.45389858,4.64608076 C6.88234968,5.28206651 6.80263785,5.58491686 7.12148517,6.07957245 C7.29885482,6.35289764 7.59594594,6.52220905 7.91860349,6.53384798 L7.91860349,6.53384798 L21.1507675,6.53384798 C21.4308548,6.53384798 21.670625,6.62101216 21.8337144,6.83112471 C21.9968038,7.04123727 22.0435467,7.32082751 21.9578498,7.5736342 L21.9578498,7.5736342 L20.1344417,13.5296912 C19.8182354,14.4890106 18.9672885,15.1644178 17.9722582,15.2458432 L17.9722582,15.2458432 L9.22388473,15.2458432 C8.27336536,15.155352 7.4514576,14.5366515 7.09159324,13.6407363 C7.08162926,13.6003563 7.0118814,13.4691211 7.0118814,13.378266 C6.72292602,12.3990499 5.41764477,7.02850356 5.12868939,6.53384798 C4.96316485,6.23794413 4.64690714,6.06210569 4.31164311,6.07957245 L4.31164311,6.07957245 L3.02628983,6.07957245 C2.45948561,6.07957245 2,5.6140443 2,5.03978622 C2,4.46552815 2.45948561,4 3.02628983,4 L3.02628983,4 Z"></path></svg>';
+                echo "</button>";
+                echo "</form>";
+                echo '</div>';
             }
 
-            if(isset($_POST['button'. $row["ID"] ])) {
-                echo "HALLLO";
-            }
-            if (isset($_GET['alle'])) loadItems('1');
-            if (isset($_GET['ernaehrung'])) loadItems('2');
-            if (isset($_GET['gesundheit'])) loadItems('3');
-            if (isset($_GET['haare'])) loadItems('4');
-            if (isset($_GET['make-up'])) loadItems('5');
-            if (isset($_GET['maenerpflege'])) loadItems('6');
-            if (isset($_GET['pflege-und-parfum'])) loadItems('7');
-            if (isset($_GET['tier'])) loadItems('8');
+            mysqli_close($con);
 
             function loadItems($id){
-                //lade die items neu, je nach kategorie
+                //lade die items neu, je nach category
                 switch($id)
                 {
                     case 1:
                         global $sql;
-                        global $result;
-                        global $conn;
-                        $sql = "SELECT * FROM produkte";
-                        $result = $conn->query($sql);
+                        $sql = "SELECT * FROM products";
                         break;
                     case 2:
                         global $sql;
-                        global $result;
-                        global $conn;
-                        $sql = "SELECT * FROM produkte WHERE Kategorie='Ernaehrung';";
-                        $result = $conn->query($sql);
+                        $sql = "SELECT * FROM products WHERE category='Ernaehrung';";
                         break;
                     case 3:
                         global $sql;
-                        global $result;
-                        global $conn;
-                        $sql = "SELECT * FROM produkte WHERE Kategorie='Gesundheit';";
-                        $result = $conn->query($sql);
+                        $sql = "SELECT * FROM products WHERE category='Gesundheit';";
                         break;
                     case 4:
                         global $sql;
-                        global $result;
-                        global $conn;
-                        $sql = "SELECT * FROM produkte WHERE Kategorie='haare';";
-                        $result = $conn->query($sql);
+                        $sql = "SELECT * FROM products WHERE category='haare';";
                         break;
                     case 5:
                         global $sql;
-                        global $result;
-                        global $conn;
-                        $sql = "SELECT * FROM produkte WHERE Kategorie='makeup';";
-                        $result = $conn->query($sql);
+                        $sql = "SELECT * FROM products WHERE category='makeup';";
                         break;
                     case 6:
                         global $sql;
-                        global $result;
-                        global $conn;
-                        $sql = "SELECT * FROM produkte WHERE Kategorie='Maennerpflege';";
-                        $result = $conn->query($sql);
+                        $sql = "SELECT * FROM products WHERE category='Maennerpflege';";
                         break;
                     case 7:
                         global $sql;
-                        global $result;
-                        global $conn;
-                        $sql = "SELECT * FROM produkte WHERE Kategorie='pflegeundparfum';";
-                        $result = $conn->query($sql);
+                        $sql = "SELECT * FROM products WHERE Kategorie='pflegeundparfum';";
                         break;
                     case 8:
                         global $sql;
-                        global $result;
-                        global $conn;
-                        $sql = "SELECT * FROM produkte WHERE Kategorie='tier';";
-                        $result = $conn->query($sql);
+                        $sql = "SELECT * FROM products WHERE category='tier';";
                         break;
                 }
             }
+
             function substrwords($text, $maxchar, $end='...') {
                 if (strlen($text) > $maxchar || $text == '') {
                     $words = preg_split('/\s/', $text);      
@@ -221,8 +197,15 @@
                 }
                 return $output;
             }
-        ?>
+            ?>
+
+            <div style="clear:both;"></div>
+
+            <div class="message_box" style="margin:10px 0px;">
+            <?php echo $status; ?>
+            </div>
         </div>
+
 </body>
 
 </html>
