@@ -93,13 +93,8 @@ if(empty($_SESSION["shopping_cart"])) {
         <div style="margin-top:100px; left: 50%; transform: translateX(-50%); position: relative;">
         <div class="grid-container">
         <?php
-        //Für die serachbox entweder:
-          if ($_POST['search-field'] != "") {
-                // $_POST['search-field'] ist der Inhalt der Searchbox den du abgleichen kannst
-            }
-
-        //oder
-        function search(val){
+        //Searchbox
+        function search($val){
             if(val!= ""){
                //val ist der Inhalt der Searchbox, dann muss aber die Lupe rausgenommen werden, weil das onblur ist
             }
