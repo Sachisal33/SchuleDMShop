@@ -29,19 +29,19 @@ nav .animation {
 	border-radius: 8px;
 }
 nav a:nth-child(1) {
-	width: 120px;
+	width: 80px;
 }
 nav a:nth-child(2) {
 	width: 120px;
 }
 nav a:nth-child(3) {
-	width: 80px;
+	width: 120px;
 }
 nav a:nth-child(4) {
-	width: 110px;
+	width: 80px;
 }
 nav a:nth-child(5) {
-	width: 90px;
+	width: 110px;
 }
 nav a:nth-child(6) {
 	width: 150px;
@@ -53,43 +53,43 @@ nav a:nth-child(8) {
 	width: 80px;
 }
 nav .start-home, a:nth-child(1):hover~.animation {
-	width: 120px;
+	width: 80px;
 	left: 0;
 	background-color: #1abc9c;
 }
 nav .start-about, a:nth-child(2):hover~.animation {
 	width: 120px;
-	left: 120px;
+	left: 80px;
 	background-color: #3498db;
 }
 nav .start-blog, a:nth-child(3):hover~.animation {
-	width: 80px;
-	left: 240px;
+	width: 120px;
+	left: 200px;
 	background-color: #9b59b6;
 }
 nav .start-portefolio, a:nth-child(4):hover~.animation {
-	width: 110px;
+	width: 80px;
 	left: 320px;
 	background-color: #e74c3c;
 }
 nav .start-contact, a:nth-child(5):hover~.animation {
-	width: 90px;
-	left: 430px;
+	width: 110px;
+	left: 400px;
 	background-color: #e67e22;
 }
 nav .start-contact, a:nth-child(6):hover~.animation {
 	width: 150px;
-	left: 520px;
+	left: 510px;
 	background-color: #e67e22;
 }
 nav .start-contact, a:nth-child(7):hover~.animation {
 	width: 160px;
-	left: 670px;
+	left: 660px;
 	background-color: #e67e22;
 }
 nav .start-contact, a:nth-child(8):hover~.animation {
 	width: 80px;
-	left: 830px;
+	left: 820px;
 	background-color: #e67e22;
 }
 
@@ -179,18 +179,127 @@ body {
     border-radius: 20px;
     background: rgb(229, 233, 241);
 }
+
 .grid-container {
+	background-color: transparent !important;
 	display: grid;
-	grid-template-columns: repeat(3,minmax(0,1fr));
+	grid-template-columns: repeat(5,minmax(0,1fr));
 	grid-gap: 1rem;
     gap: 1rem;
-	background-color: #2196F3;
 	padding: 10px;
-  }  
-  .grid-item {
-	background-color: rgba(255, 255, 255, 0.8);
-	border: 1px solid rgba(0, 0, 0, 0.8);
-	padding: 20px;
-	font-size: 30px;
-	text-align: center;
+  } 
+
+  .grid-form-container{
+	background-color: transparent !important;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-gap: 1rem;
+    gap: 1rem;
+    padding: 10px;
   }
+
+  .cart-container{
+	display: flex; background: rgb(229, 233, 241); border-radius: 20px; margin: 20px; height:200px
+  }
+
+  .cart-image{
+	max-height: 200px; max-width: 100px;padding:20px; object-fit: contain;
+  }
+
+  .normalButton{
+	color: rgb(0, 40, 120);
+	background-color: white;
+	border-radius: 44px;
+	width:110px;
+  }
+
+  form{
+    width:92%;
+    padding: 20px 3vw;
+    border-radius:5px;
+}
+
+label{
+    margin-bottom:15px;
+    position:relative;
+}
+
+input[type='text'], input[type='email'], input[type='date'], input[type='number']{
+    border:none;
+	border-radius: 15px;
+	height: 15px;
+    margin-top:20px;
+    padding:10px 10px;
+    outline:none;
+    width:90%;
+}
+
+input[type='text']:invalid, input[type='email']:invalid, input[type='date']:invalid, input[type='number']:invalid {
+	box-shadow: 2px 2px 2px 2px red !important;
+  }
+  input[type='text']:-moz-ui-invalid, input[type='email']:-moz-ui-invalid, input[type='date']:-moz-ui-invalid, input[type='number']:-moz-ui-invalid {
+	box-shadow: 2px 2px 2px 2px red !important;
+  }
+  input[type='text']:-moz-submit-invalid, input[type='email']:-moz-submit-invalid, input[type='date']:-moz-submit-invalid, input[type='number']:-moz-submit-invalid {
+	box-shadow: 2px 2px 2px 2px red !important;
+  }
+
+input::placeholder{
+    opacity:0;
+}
+span{
+    position:absolute;
+    top:0;
+    left:10px;
+    transform:translateY(30px);
+    font-size:0.825em;
+    transition-duration:300ms;
+}
+
+label:focus-within > span,
+input:not(:placeholder-shown) + span{
+    color:white;
+    transform:translateY(0px);
+}
+
+input[type='radio']:after {
+	width: 15px;
+	height: 15px;
+	border-radius: 15px;
+	top: -2px;
+	left: -1px;
+	position: relative;
+	background-color: #252e36;
+	content: '';
+	display: inline-block;
+	visibility: visible;
+	border: 2px solid #d1d3d1;
+}
+
+input[type='radio']:checked:after {
+	width: 15px;
+	height: 15px;
+	border-radius: 15px;
+	top: -2px;
+	left: -1px;
+	position: relative;
+	background-color: rgb(0, 40, 120);
+	content: '';
+	display: inline-block;
+	visibility: visible;
+	border: 2px solid rgb(229, 233, 241);
+}
+
+
+
+  @media (max-width: 1170px){
+	  .grid-container {
+		  grid-template-columns: repeat(4,minmax(0,1fr));
+		} 
+  }
+
+	@media (max-width: 940px){
+		.grid-container {
+			grid-template-columns: repeat(3,minmax(0,1fr));
+		  } 
+	}
