@@ -285,7 +285,14 @@ input[type='radio']:checked:after {
 	border: 2px solid rgb(229, 233, 241);
 }
 
-
+.searchInput{
+	position: absolute; 
+	left: 50%;
+	transform: translateX(-50%);
+	max-width: 1220px;
+	width:100vw;
+	margin-top: 20px;
+}
 
   @media (max-width: 1170px){
 	  .grid-container {

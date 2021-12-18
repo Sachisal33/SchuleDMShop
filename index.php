@@ -58,7 +58,7 @@ if(empty($_SESSION["shopping_cart"])) {
 
 <body>
     <!--Navigation-->
-    <div style="position: absolute; left: 50%; transform: translateX(-50%); max-width: 1220px; width:100vw; margin-top: 20px;">
+    <div class="searchInput">
         <div style="position: absolute;">
             <a href="index.php">
                 <svg viewBox="0 0 20 13.54" width="70" height="100%" role="img" data-designsystem="true">
@@ -70,7 +70,7 @@ if(empty($_SESSION["shopping_cart"])) {
         </a>
         </div>
         <div style="display:flex; position: absolute; left: 50%; transform: translateX(-50%);">
-            <input id="search-field" placeholder="Suchen und finden" type="search" value="" style="padding-right: 70px; line-height: 44px; border: 2px solid transparent; border-radius: 30px; background-color: rgb(229, 233, 241); appearance: none; height: 44px; padding-left: 1.25rem; font-size: 1rem; outline: none; color: rgb(0, 40, 120); appearance: none; font-weight: 400; font-family: dmbrand, Arial, Helvetica, sans-serif; box-sizing: border-box; width: 100%;">
+            <input id="search-field" placeholder="Suchen und finden" type="search" value="" style="line-height: 44px; border: 2px solid transparent; border-radius: 30px; background-color: rgb(229, 233, 241); appearance: none; height: 44px; padding-left: 1.25rem; font-size: 1rem; outline: none; color: rgb(0, 40, 120); appearance: none; font-weight: 400; font-family: dmbrand, Arial, Helvetica, sans-serif; box-sizing: border-box; width: 23vw;">
             <a href="/overviews/search.php">
                 <svg viewBox="0 0 24 24" width="24" height="24" role="img" data-designsystem="true" style="margin:9px;">
                     <path fill="#FFFFFF" d="M18.5097399,15.9620127 L21.4723484,18.9246212 C22.1758839,19.6281566 22.1758839,20.768813 21.4723484,21.4723484 C20.768813,22.1758839 19.6281566,22.1758839 18.9246212,21.4723484 L15.9620127,18.5097399 C14.5394918,19.4515532 12.8337942,20 11,20 C6.02943725,20 2,15.9705627 2,11 C2,6.02943725 6.02943725,2 11,2 C15.9705627,2 20,6.02943725 20,11 C20,12.8337942 19.4515532,14.5394918 18.5097399,15.9620127 Z M11,16.4 C13.9823376,16.4 16.4,13.9823376 16.4,11 C16.4,8.01766235 13.9823376,5.6 11,5.6 C8.01766235,5.6 5.6,8.01766235 5.6,11 C5.6,13.9823376 8.01766235,16.4 11,16.4 Z"></path>

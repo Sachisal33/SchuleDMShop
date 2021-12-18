@@ -14,7 +14,7 @@
 
 <body>
     <!--Navigation-->
-    <div style="position: absolute; left: 50%; transform: translateX(-50%); max-width: 1220px; width:100vw; margin-top: 20px;">
+    <div class="searchInput">
         <div style="position: absolute;">
             <a href="index.php">
                 <svg viewBox="0 0 20 13.54" width="70" height="100%" role="img" data-designsystem="true">
