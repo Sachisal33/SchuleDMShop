@@ -1,3 +1,5 @@
+CREATE DATABASE dmshop;
+
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
