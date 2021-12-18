@@ -42,7 +42,7 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
     <!--Navigation-->
     <div style="position: absolute; left: 50%; transform: translateX(-50%); max-width: 1220px; width:100vw; margin-top: 20px;">
         <div style="position: absolute;">
-            <a href="/index.php">
+            <a href="index.php">
                 <svg viewBox="0 0 20 13.54" width="70" height="100%" role="img" data-designsystem="true">
                     <path fill="#FFFFFF" d="M19.88,7.95l-0.99,0.17c-0.1-0.22-0.51-0.87-0.51-0.87s-0.82,0.13-0.95,0.15l0.43-2.62 c0.28-1.36-0.16-2.59-1.68-2.59c-0.59,0-1.07,0.28-1.35,0.45c-0.22-0.26-0.63-0.45-1.05-0.45c-0.27,0-0.89,0.05-1.46,0.47l0.07-0.39 c-0.33-0.03-1.61,0-1.95,0.03l0.43-2.25C10.26,0,8.68-0.08,6.96,0.17L6.52,2.34c-1.7,0.48-2.78,2.05-2.78,4.2 c0,0.42,0.06,0.79,0.16,1.1C2.94,7.76,1.2,8.07,0.03,8.71c0.26,0.25,0.66,0.62,0.94,0.96L0,10.02c0.89,1.04,1.58,2,2.17,3.52 c1.26-0.66,3.01-1.64,6.18-1.64c1.49,0,5.88,1.13,8.93,1.13c0.96,0,1.72-0.09,2.47-0.47C19.91,11.58,20.14,9.57,19.88,7.95"></path>
                     <path fill="#E30613" d="M18.5,9.73c-0.78,0.53-2.33,1.2-4.74,0.6c-0.23-0.06-0.45-0.12-0.66-0.18c-1.52-0.66-3.06-1.36-3.68-1.83 c1.74,0.27,4.34,0.54,8.54-0.14C17.96,8.18,18.36,8.81,18.5,9.73 M2.19,10.16l-0.73,0.26c0,0,0.84,1,0.98,1.32l0.21,0.57 c0,0,2.65-1.46,6.5-1.24c0.87,0.05,1.64,0.3,1.64,0.3s-1.57-1.02-1.88-1.12C7.4,9.88,5.96,9.76,5.11,9.73 c-1.46,0.39-2.71,1.05-2.71,1.05S2.29,10.47,2.19,10.16"></path>
@@ -69,24 +69,21 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
             ?>
 
                 <div style="margin-top:100px; left: 50%; transform: translateX(-50%); position: relative;">
-                    <h1 style="font-family: cursive; color: white;">Warenkorb</h1>
-                    <div style="display: flex">
-                        <h2 style="color: white; width: 90%;">Summe: <?php echo "$" . $total_price; ?> €</h2>
-                        <button href="" class="normalButton">zur Kasse</button>';
-                    </div>
+
+                <h1 style="font-family: cursive; color: white;">Warenkorb</h1>
                     <hr style="margin-bottom: 20px;">
-                    <div style="width:700px; margin:50 auto;">
+                    <div>
                         <?php
                         foreach ($_SESSION["shopping_cart"] as $product) {
                         ?>
                             <div class="cart-container">
                                 <img class="cart-image" src="<?php echo $product["image"]; ?>">
-                                <div style="margin:20px;">
+                                <div style="margin: 20px;position: absolute; padding: 0px 200px 0px 140px;">
                                     <b><?php echo $product["name"]; ?></b></br>
                                     <?php echo $product["description"]; ?></br>
                                     <div style="display: flex; margin-top: 75px">
-                                    <div style="margin: 0px 20px;">Anzahl</div>
-                                        <form method='post' action=''>
+                                    <div style="margin-right: 20px; ">Anzahl</div>
+                                        <form method='post' action='' style='margin-top: -2px;'>
                                             <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
                                             <input type='hidden' name='action' value="change" />
                                             <select name='quantity' class='quantity' onchange="this.form.submit()">
@@ -103,16 +100,15 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                                     <form method='post' action=''>
                                         <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
                                         <input type='hidden' name='action' value="remove" />
-                                        <button type='submit' class='remove'>Entfernen</button>
+                                        <button type='submit' class='remove button' style="left: 15% !important;"><svg data-dmid="delete" viewBox="0 0 24 24" width="24" height="24" role="img"><path fill="currentColor" d="M 10 2 L 9 3 L 4 3 L 4 5 L 7 5 L 17 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 5 7 L 5 22 L 19 22 L 19 7 L 5 7 z"></path></svg></button>
                                     </form>
-                                    <div style="margin-top:93px">ausgerechneter Preis: <?php echo "$" . $product["price"] * $product["quantity"]; ?></div>
+                                    <div style="margin-top:63px">ausgerechneter Preis: <?php echo "$" . $product["price"] * $product["quantity"]; ?></div>
                                 </div>
                             </div>
                         <?php
                             $total_price += ($product["price"] * $product["quantity"]);
                         }
                         ?>
-                        <strong>TOTAL: <?php echo "$" . $total_price; ?></strong>
                     <?php
                 } else {
                     echo "<h3>Your cart is empty!</h3>";
@@ -127,30 +123,11 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                     </div>
 
                 </div>
-
-
-                <!--Hier kann wieder per row rein, dann alles echo-->
-
-                <div class="cart-container">
-                    <img class="cart-image" src="https://media.dm-static.com/images/f_auto,q_auto,c_fit,w_260,h_270/v1633050948/products/pim/4015100711981-2718676/schwarzkopf-gliss-kur-haarkur-winter-edition"> <!-- src=". $row["ImageSource"]."-->
-                    <div style="margin:20px;">
-                        <b> Titel </b></br>
-                        Beschreibung</br>
-                        <div style="display: flex; margin-top: 75px">
-                            <img width="20" height="20" src="https://cdn-icons-png.flaticon.com/512/992/992482.png">
-                            <!--name="add'. $row["ID"].'"-->
-                            <div style="margin: 0px 20px;">Anzahl</div>
-                            <img width="20" height="20" src="https://cdn-icons.flaticon.com/png/512/2569/premium/2569198.png?token=exp=1639333311~hmac=b8d10625aa25f8668375e7300535c5f4">
-                            <!--name="remove'. $row["ID"].'"-->
-                        </div>
-                    </div>
-                    <div style="right: 40px; margin-top: 20px; position: absolute; text-align: right;">
-                        <a href="">entfernen</a>
-                        <div style="margin-top:93px">ausgerechneter Preis €</div>
-                    </div>
-                </div>
                 <hr style="margin: 20px 0px;">
-
+                    <div style="display: flex">
+                    <h2 style="color: white; width: 90%;">Summe: <?php echo "$" . $total_price; ?></h2>
+                        <button href="adressForm" class="normalButton">zur Kasse</button>';
+                    </div>
         </div>
 </body>
 
