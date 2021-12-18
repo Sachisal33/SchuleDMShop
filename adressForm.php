@@ -98,10 +98,27 @@
                     </label>
             </div>
         </form>
-        <?php
-
-        ?>
-        </div>
+        
+        <hr style="margin: 20px 0px;">
+        <div style="display: flex">
+                    <div style="color: white; width: 90%;"></div>
+        <div id="donate-button-container">
+        <div id="donate-button"></div>
+        <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+        <script>
+        PayPal.Donation.Button({
+        env:'production',
+        hosted_button_id:'Z6DTR5285QMGC',
+        image: {
+        src:'https://pics.paypal.com/00/s/NWMxNDA1ZDgtZGNhYS00NDk0LWJkYzMtYmM2ZmI5N2FlMDA5/file.PNG',
+        alt:'Spenden mit dem PayPal-Button',
+        title:'PayPal - The safer, easier way to pay online!',
+        }
+        }).render('#donate-button');
+        </script>
+    </div>
+    </div>
+</div>
 </body>
 
 </html>

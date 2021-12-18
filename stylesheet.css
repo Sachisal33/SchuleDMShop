@@ -294,6 +294,10 @@ input[type='radio']:checked:after {
 	margin-top: 20px;
 }
 
+#donate-button img {
+	width:110px;
+}
+
   @media (max-width: 1170px){
 	  .grid-container {
 		  grid-template-columns: repeat(4,minmax(0,1fr));

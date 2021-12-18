@@ -126,7 +126,7 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                 <hr style="margin: 20px 0px;">
                     <div style="display: flex">
                     <h2 style="color: white; width: 90%;">Summe: <?php echo "$" . $total_price; ?></h2>
-                        <button href="adressForm" class="normalButton">zur Kasse</button>';
+                        <button onclick="window.location.href='adressForm.php';" class="normalButton">zur Kasse</button></a>
                     </div>
         </div>
 </body>
