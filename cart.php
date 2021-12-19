@@ -19,7 +19,7 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
     foreach ($_SESSION["shopping_cart"] as &$value) {
         if ($value['code'] === $_POST["code"]) {
             $value['quantity'] = $_POST["quantity"];
-            break; // Stop the loop after we've found the product
+            break; 
         }
     }
 }
@@ -125,7 +125,7 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                 </div>
                 <hr style="margin: 20px 0px;">
                     <div style="display: flex">
-                    <h2 style="color: white; width: 90%;">Summe: <?php echo "$" . $total_price; ?></h2>
+                    <h2 style="color: white; width: 90%;">Summe: <?php if(isset($total_price)){echo "$" . $total_price;}else{echo "$" . 0; }  ?></h2>
                         <button onclick="window.location.href='adressForm.php';" class="normalButton">zur Kasse</button></a>
                     </div>
         </div>
