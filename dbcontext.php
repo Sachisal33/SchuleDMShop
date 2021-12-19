@@ -1,4 +1,4 @@
-<?php
+
 
 $con = mysqli_connect("localhost","root","","dmshop");
 	if (mysqli_connect_errno()){

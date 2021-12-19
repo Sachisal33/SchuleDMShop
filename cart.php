@@ -103,6 +103,7 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                             </div>
                         <?php
                             $total_price += ($product["price"] * $product["quantity"]);
+                            $_SESSION["shopping_cart"]["totalprice"] = $total_price;
                         }
                         ?>
                     <?php

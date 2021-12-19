@@ -1,5 +1,12 @@
+
 <?php
-//$total = 
+session_start();
+$status = "";
+$total = 0;
+if (!empty($_SESSION["shopping_cart"]["totalprice"])) {
+    global $total;
+    $total = $_SESSION["shopping_cart"]["totalprice"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
