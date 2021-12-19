@@ -89,7 +89,7 @@ nav .start-contact, a:nth-child(7):hover~.animation {
 }
 nav .start-contact, a:nth-child(8):hover~.animation {
 	width: 80px;
-	left: 820px;
+	left: 830px;
 	background-color: #22e62c;;
 }
 
@@ -290,13 +290,18 @@ input[type='radio']:checked:after {
 	border: 2px solid rgb(229, 233, 241);
 }
 
-.searchInput{
+.mainContainer{
 	position: absolute; 
 	left: 50%;
 	transform: translateX(-50%);
 	max-width: 1220px;
 	width:100vw;
 	margin-top: 20px;
+}
+
+.messageBox{
+	margin:10px 0px;
+	text-align-last: center;
 }
 
   @media (max-width: 1170px){

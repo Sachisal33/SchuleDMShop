@@ -1,3 +1,6 @@
+<?php
+//$total = 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,15 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dm-drogerie markt</title>
-
-    <script>
-    </script>
 </head>
 
 <body>
     <!--Navigation-->
-    <div class="searchInput">
-        <div style="position: absolute;">
+    <div class="mainContainer">
+        <div style="position: absolute; left:20px">
             <a href="index.php">
                 <svg viewBox="0 0 20 13.54" width="70" height="100%" role="img" data-designsystem="true">
                 <path fill="#FFFFFF" d="M19.88,7.95l-0.99,0.17c-0.1-0.22-0.51-0.87-0.51-0.87s-0.82,0.13-0.95,0.15l0.43-2.62 c0.28-1.36-0.16-2.59-1.68-2.59c-0.59,0-1.07,0.28-1.35,0.45c-0.22-0.26-0.63-0.45-1.05-0.45c-0.27,0-0.89,0.05-1.46,0.47l0.07-0.39 c-0.33-0.03-1.61,0-1.95,0.03l0.43-2.25C10.26,0,8.68-0.08,6.96,0.17L6.52,2.34c-1.7,0.48-2.78,2.05-2.78,4.2 c0,0.42,0.06,0.79,0.16,1.1C2.94,7.76,1.2,8.07,0.03,8.71c0.26,0.25,0.66,0.62,0.94,0.96L0,10.02c0.89,1.04,1.58,2,2.17,3.52 c1.26-0.66,3.01-1.64,6.18-1.64c1.49,0,5.88,1.13,8.93,1.13c0.96,0,1.72-0.09,2.47-0.47C19.91,11.58,20.14,9.57,19.88,7.95"></path>
@@ -28,7 +28,9 @@
         <div style="margin-top:100px; left: 50%; transform: translateX(-50%); position: relative;">
         <h1 style="font-family: cursive; color: white;">Ihre Persönlichen Daten</h1>
         <hr style="margin-bottom: 20px;">
-        <form class="adressform" action="http://paypal.me/YunaTsukuyomiko?country.x=DE&locale.x=de_DE" method="post" target="_top">
+        <?php
+                    echo '<form class="adressform" action="http://paypal.me/YunaTsukuyomiko/' . $total . '" method="post" target="_top">';
+                    ?>
             <div class="grid-form-container">
                 <div style="display:flex; color: white">
                     <input type="radio" style="margin:0px 20px;" name="gender" value="Divers"> Divers
@@ -73,23 +75,23 @@
                         <span>Ort</span>
                     </label>
             </div>
-        <h1 style="font-family: cursive; color: white;">Ihre Rechnungsadresse</h1>
+        <h1 style="font-family: cursive; color: white;">Ihre Abweichende Rechnungsadresse</h1>
         <hr style="margin: 20px 0px;">
             <div class="grid-form-container">
                     <label for="street">
-                    <input type="text" id="street" placeholder="Straße & Hausnummer" required>
+                    <input type="text" id="street" placeholder="Straße & Hausnummer">
                         <span>Straße & Hausnummer</span>
                     </label>
                     <label for="additional">
-                        <input type="text" id="additional" placeholder="Adresszusatz" required>
+                        <input type="text" id="additional" placeholder="Adresszusatz">
                         <span>Adresszusatz</span>
                     </label>
                     <label for="plz">
-                        <input type="number" id="plz" placeholder="Postleitzahl" required>
+                        <input type="number" id="plz" placeholder="Postleitzahl">
                         <span>Postleitzahl</span>
                     </label>
                     <label for="area">
-                        <input type="text" id="area" placeholder="Ort" required>
+                        <input type="text" id="area" placeholder="Ort">
                         <span>Ort</span>
                     </label>
             </div>

@@ -40,8 +40,8 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
 
 <body>
     <!--Navigation-->
-    <div class="searchInput">
-        <div style="position: absolute;">
+    <div class="mainContainer">
+    <div style="position: absolute; left:20px">
             <a href="index.php">
                 <svg viewBox="0 0 20 13.54" width="70" height="100%" role="img" data-designsystem="true">
                     <path fill="#FFFFFF" d="M19.88,7.95l-0.99,0.17c-0.1-0.22-0.51-0.87-0.51-0.87s-0.82,0.13-0.95,0.15l0.43-2.62 c0.28-1.36-0.16-2.59-1.68-2.59c-0.59,0-1.07,0.28-1.35,0.45c-0.22-0.26-0.63-0.45-1.05-0.45c-0.27,0-0.89,0.05-1.46,0.47l0.07-0.39 c-0.33-0.03-1.61,0-1.95,0.03l0.43-2.25C10.26,0,8.68-0.08,6.96,0.17L6.52,2.34c-1.7,0.48-2.78,2.05-2.78,4.2 c0,0.42,0.06,0.79,0.16,1.1C2.94,7.76,1.2,8.07,0.03,8.71c0.26,0.25,0.66,0.62,0.94,0.96L0,10.02c0.89,1.04,1.58,2,2.17,3.52 c1.26-0.66,3.01-1.64,6.18-1.64c1.49,0,5.88,1.13,8.93,1.13c0.96,0,1.72-0.09,2.47-0.47C19.91,11.58,20.14,9.57,19.88,7.95"></path>
@@ -98,7 +98,7 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                                         <input type='hidden' name='action' value="remove" />
                                         <button type='submit' class='remove button' style="left: 15% !important;"><svg data-dmid="delete" viewBox="0 0 24 24" width="24" height="24" role="img"><path fill="currentColor" d="M 10 2 L 9 3 L 4 3 L 4 5 L 7 5 L 17 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 5 7 L 5 22 L 19 22 L 19 7 L 5 7 z"></path></svg></button>
                                     </form>
-                                    <div style="margin-top:63px">ausgerechneter Preis: <?php echo "$" . $product["price"] * $product["quantity"]; ?></div>
+                                    <div style="margin-top:63px">ausgerechneter Preis: <?php echo "€" . $product["price"] * $product["quantity"]; ?></div>
                                 </div>
                             </div>
                         <?php
@@ -114,14 +114,14 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
 
                     <div style="clear:both;"></div>
 
-                    <div class="message_box" style="margin:10px 0px;">
+                    <div class="messageBox">
                         <?php echo $status; ?>
                     </div>
 
                 </div>
                 <hr style="margin: 20px 0px;">
                     <div style="display: flex">
-                    <h2 style="color: white; width: 90%;">Summe: <?php if(isset($total_price)){echo "$" . $total_price;}else{echo "$" . 0; }  ?></h2>
+                    <h2 style="color: white; width: 90%;">Summe: <?php if(isset($total_price)){echo "€" . $total_price;}else{echo "€" . 0; }  ?></h2>
                         <button id="buy" onclick="window.location.href='adressForm.php';" class="normalButton" <?php if (empty($_SESSION["shopping_cart"])){ ?> disabled <?php   } ?>>zur Kasse</button></a>
                 </div>
         </div>
