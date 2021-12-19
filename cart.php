@@ -51,7 +51,10 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                 </svg>
             </a>
         </div>
-
+        <div class="cart">
+            <div style="margin-top:100px; left: 50%; transform: translateX(-50%); position: relative;">
+                <h1 style="font-family: cursive; color: white;">Warenkorb</h1>
+                <hr style="margin-bottom: 20px;">
 
         <?php
         if (!empty($_SESSION["shopping_cart"])) {
@@ -61,17 +64,10 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
         <?php
         }
         ?>
-
-        <div class="cart">
             <?php
             if (isset($_SESSION["shopping_cart"])) {
                 $total_price = 0;
             ?>
-
-                <div style="margin-top:100px; left: 50%; transform: translateX(-50%); position: relative;">
-
-                <h1 style="font-family: cursive; color: white;">Warenkorb</h1>
-                    <hr style="margin-bottom: 20px;">
                     <div>
                         <?php
                         foreach ($_SESSION["shopping_cart"] as $product) {
@@ -111,7 +107,7 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                         ?>
                     <?php
                 } else {
-                    echo "<h3>Your cart is empty!</h3>";
+                    echo "<h3 style='color:white'>Your cart is empty!</h3>";
                 }
                     ?>
                     </div>
@@ -126,8 +122,8 @@ if (isset($_POST['action']) && $_POST['action'] == "change") {
                 <hr style="margin: 20px 0px;">
                     <div style="display: flex">
                     <h2 style="color: white; width: 90%;">Summe: <?php if(isset($total_price)){echo "$" . $total_price;}else{echo "$" . 0; }  ?></h2>
-                        <button onclick="window.location.href='adressForm.php';" class="normalButton">zur Kasse</button></a>
-                    </div>
+                        <button id="buy" onclick="window.location.href='adressForm.php';" class="normalButton" <?php if (empty($_SESSION["shopping_cart"])){ ?> disabled <?php   } ?>>zur Kasse</button></a>
+                </div>
         </div>
 </body>
 

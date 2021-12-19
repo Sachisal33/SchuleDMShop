@@ -210,6 +210,7 @@ body {
 	color: rgb(0, 40, 120);
 	background-color: white;
 	border-radius: 44px;
+	height: 50px;
 	width:110px;
   }
 
@@ -237,6 +238,10 @@ input[type='text']:invalid, input[type='email']:invalid, input[type='date']:inva
   }
   input[type='text']:-moz-submit-invalid, input[type='email']:-moz-submit-invalid, input[type='date']:-moz-submit-invalid, input[type='number']:-moz-submit-invalid {
 	box-shadow: 2px 2px 2px 2px red !important;
+  }
+
+  form:invalid>#pay {
+	pointer-events: none;
   }
 
 input::placeholder{
@@ -292,10 +297,6 @@ input[type='radio']:checked:after {
 	max-width: 1220px;
 	width:100vw;
 	margin-top: 20px;
-}
-
-#donate-button img {
-	width:110px;
 }
 
   @media (max-width: 1170px){

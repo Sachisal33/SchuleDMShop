@@ -28,7 +28,7 @@
         <div style="margin-top:100px; left: 50%; transform: translateX(-50%); position: relative;">
         <h1 style="font-family: cursive; color: white;">Ihre Persönlichen Daten</h1>
         <hr style="margin-bottom: 20px;">
-        <form class="personalData">
+        <form class="adressform" action="http://paypal.me/YunaTsukuyomiko?country.x=DE&locale.x=de_DE" method="post" target="_top">
             <div class="grid-form-container">
                 <div style="display:flex; color: white">
                     <input type="radio" style="margin:0px 20px;" name="gender" value="Divers"> Divers
@@ -53,10 +53,8 @@
                         <span>E-mail Adresse</span>
                     </label>
             </div>
-        </form>
         <h1 style="font-family: cursive; color: white;">Ihre Lieferadresse</h1>
         <hr style="margin: 20px 0px;">
-        <form class="billingAddress">
             <div class="grid-form-container">
                     <label for="street">
                     <input type="text" id="street" placeholder="Straße & Hausnummer" required>
@@ -75,10 +73,8 @@
                         <span>Ort</span>
                     </label>
             </div>
-        </form>
         <h1 style="font-family: cursive; color: white;">Ihre Rechnungsadresse</h1>
         <hr style="margin: 20px 0px;">
-        <form class="shippingAddress">
             <div class="grid-form-container">
                     <label for="street">
                     <input type="text" id="street" placeholder="Straße & Hausnummer" required>
@@ -97,27 +93,14 @@
                         <span>Ort</span>
                     </label>
             </div>
-        </form>
         
         <hr style="margin: 20px 0px;">
         <div style="display: flex">
-                    <div style="color: white; width: 90%;"></div>
-        <div id="donate-button-container">
-        <div id="donate-button"></div>
-        <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
-        <script>
-        PayPal.Donation.Button({
-        env:'production',
-        hosted_button_id:'Z6DTR5285QMGC',
-        image: {
-        src:'https://pics.paypal.com/00/s/NWMxNDA1ZDgtZGNhYS00NDk0LWJkYzMtYmM2ZmI5N2FlMDA5/file.PNG',
-        alt:'Spenden mit dem PayPal-Button',
-        title:'PayPal - The safer, easier way to pay online!',
-        }
-        }).render('#donate-button');
-        </script>
-    </div>
-    </div>
+        <div style="width: 90%;"></div>
+        <button class="normalButton">Bezahlen</button>
+        </div>
+    </form>
+
 </div>
 </body>
 
